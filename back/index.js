@@ -67,29 +67,29 @@ app.use('/api/post', postAPIRouter);
 app.use('/api/posts', postsAPIRouter);
 app.use('/api/hashtag', hashtagAPIRouter);
 
-if (prod) {
-  const lex = require('greenlock-express').create({
-    version: 'draft-11',
-    configDir: '/etc/letsencrypt', // 또는 ~/letsencrypt/etc
-    server: 'https://acme-v02.api.letsencrypt.org/directory',
-    email: 'zerohch0@gmail.com',
-    store: require('greenlock-store-fs'),
-    approveDomains: (opts, certs, cb) => {
-      if (certs) {
-        opts.domains = ['api.nodebird.com'];
-      } else {
-        opts.email = 'zerohch0@gmail.com';
-        opts.agreeTos = true;
-      }
-      cb(null, { options: opts, certs });
-    },
-    renewWithin: 81 * 24 * 60 * 60 * 1000,
-    renewBy: 80 * 24 * 60 * 60 * 1000,
-  });
-  https.createServer(lex.httpsOptions, lex.middleware(app)).listen(443);
-  http.createServer(lex.middleware(require('redirect-https')())).listen(80);
-} else {
+// if (prod) {
+//   const lex = require('greenlock-express').create({
+//     version: 'draft-11',
+//     configDir: '/etc/letsencrypt', // 또는 ~/letsencrypt/etc
+//     server: 'https://acme-v02.api.letsencrypt.org/directory',
+//     email: 'zerohch0@gmail.com',
+//     store: require('greenlock-store-fs'),
+//     approveDomains: (opts, certs, cb) => {
+//       if (certs) {
+//         opts.domains = ['api.nodebird.com'];
+//       } else {
+//         opts.email = 'zerohch0@gmail.com';
+//         opts.agreeTos = true;
+//       }
+//       cb(null, { options: opts, certs });
+//     },
+//     renewWithin: 81 * 24 * 60 * 60 * 1000,
+//     renewBy: 80 * 24 * 60 * 60 * 1000,
+//   });
+//   https.createServer(lex.httpsOptions, lex.middleware(app)).listen(443);
+//   http.createServer(lex.middleware(require('redirect-https')())).listen(80);
+// } else {
   app.listen(prod ? process.env.PORT : 3065, () => {
     console.log(`server is running on ${process.env.PORT}`);
   });
-}
+// }
