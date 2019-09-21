@@ -28,7 +28,7 @@ const NodeBird = ({ Component, store, pageProps }) => {
     <Container>
       <Provider store={store}>
         <Helmet
-          title="NodeBird"
+          title="Bon voyage!"
           htmlAttributes={{ lang: 'ko' }}
           meta={[{
             charset: 'UTF-8',
