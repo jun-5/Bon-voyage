@@ -15,11 +15,11 @@ const UserProfile = () => {
   }, []);
 
   return (
-    <Card
+    <Card style={{border:'solid 2px yellow', marginTop:'30px'}}
       actions={[
         <Link href="/profile" prefetch key="twit">
           <a>
-            <div>짹짹<br />{me.Posts.length}</div>
+            <div>게시물 수<br />{me.Posts.length}</div>
           </a>
         </Link>,
         <Link href="/profile" prefetch key="following">

@@ -21,7 +21,8 @@ import FollowButton from '../components/FollowButton';
 moment.locale('ko');
 
 const CardWrapper = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  border: 2px solid #045FB4;
 `;
 
 const PostCard = memo(({ post }) => {
@@ -90,28 +91,30 @@ const PostCard = memo(({ post }) => {
   });
 
   return (
-    <CardWrapper>
+    <CardWrapper style={{fontWeight:'bold', color:'black'}}>
       <Card
         cover={post.Images && post.Images[0] && <PostImages images={post.Images} />}
         actions={[
-          <Icon type="retweet" key="retweet" onClick={onRetweet} />,
+          <Icon type="retweet" key="retweet" onClick={onRetweet} style={{color:'#045FB4', fontWeight:'bold'}} />,
           <Icon
             type="heart"
             key="heart"
+            style={{color:'#045FB4'}}
             theme={liked ? 'twoTone' : 'outlined'}
             twoToneColor="#eb2f96"
             onClick={onToggleLike}
+
           />,
-          <Icon type="message" key="message" onClick={onToggleComment} />,
+          <Icon type="message" key="message" onClick={onToggleComment} style={{color:'#045FB4' , fontWeight:'bold'}}/>,
           <Popover
             key="ellipsis"
             content={(
-              <Button.Group>
+              <Button.Group style={{color:'#045FB4'}}>
                 {id && post.UserId === id
                   ? (
                     <>
-                      <Button>수정</Button>
-                      <Button type="danger" onClick={onRemovePost(post.id)}>삭제</Button>
+                      {/* <Button>수정</Button> */}
+                      <Button type="danger" style={{fontWeight:'bold'}} onClick={onRemovePost(post.id)}>삭제</Button>
                     </>
                   )
                   : <Button>신고</Button>}
@@ -129,8 +132,8 @@ const PostCard = memo(({ post }) => {
             <Card
               cover={post.Retweet.Images[0] && <PostImages images={post.Retweet.Images} />}
             >
-              <span style={{ float: 'right' }}>{moment(post.createdAt).format('YYYY.MM.DD.')}</span>
-              <Card.Meta
+              <span style={{ float: 'right',fontWeight:'bold', color:'black' }}>{moment(post.createdAt).format('YYYY/MM/DD')}</span>
+              <Card.Meta stlye={{fontWeight:'bold', color:'black'}}
                 avatar={(
                   <Link
                     href={{ pathname: '/user', query: { id: post.Retweet.User.id } }}
@@ -146,22 +149,22 @@ const PostCard = memo(({ post }) => {
           )
           : (
             <>
-              <span style={{ float: 'right' }}>{moment(post.createdAt).format('YYYY.MM.DD.')}</span>
-              <Card.Meta
+              <span style={{ float: 'right', fontWeight:'bold', color:'black' }}>{moment(post.createdAt).format('YYYY/MM/DD')}</span>
+              <Card.Meta style={{fontWeight:'bold', color:'black'}}
                 avatar={(
                   <Link href={{ pathname: '/user', query: { id: post.User.id } }} as={`/user/${post.User.id}`}>
                     <a><Avatar>{post.User.nickname[0]}</Avatar></a>
                   </Link>
                 )}
                 title={post.User.nickname}
-                description={<PostCardContent postData={post.content} />} // a tag x -> Link
+                description={<PostCardContent stlye={{fontWeight:'bold', color:'black'}} postData={post.content} />} // a tag x -> Link
               />
             </>
           )}
       </Card>
       {commentFormOpened && (
         <>
-          <CommentForm post={post} />
+          <CommentForm post={post} stlye={{fontWeight:'bold', color:'black'}}/>
           <List
             header={`${post.Comments ? post.Comments.length : 0} 댓글`}
             itemLayout="horizontal"

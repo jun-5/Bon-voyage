@@ -37,7 +37,7 @@ const CommentForm = ({ post }) => {
       <Form.Item>
         <Input.TextArea rows={4} value={commentText} onChange={onChangeCommentText} />
       </Form.Item>
-      <Button type="primary" htmlType="submit" loading={isAddingComment}>삐약</Button>
+      <Button type="primary" htmlType="submit" loading={isAddingComment}>댓글 게시</Button>
     </Form>
   );
 };

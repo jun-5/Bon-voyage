@@ -60,11 +60,11 @@ const PostForm = () => {
 
   return (
     <Form style={{ margin: '10px 0 20px' }} encType="multipart/form-data" onSubmit={onSubmitForm}>
-      <Input.TextArea maxLength={140} placeholder="어떤 신기한 일이 있었나요?" value={text} onChange={onChangeText} />
+      <Input.TextArea maxLength={140} placeholder="잊지 못할 순간을 공유해보세요" value={text} onChange={onChangeText} style={{fontWeight:'bold', fontSize:'20px', paddingBottom:'80px', border:'3px solid #045FB4'}} />
       <div>
         <input type="file" multiple hidden ref={imageInput} onChange={onChangeImages} />
-        <Button onClick={onClickImageUpload}>이미지 업로드</Button>
-        <Button type="primary" style={{ float: 'right' }} htmlType="submit" loading={isAddingPost}>짹짹</Button>
+        <Button onClick={onClickImageUpload} style={{color:'white', backgroundColor:'#819FF7', fontWeight:'bold',borderColor:'#819FF7'}}>Image 업로드</Button>
+        <Button type="primary" style={{ float: 'right', backgroundColor:"#045FB4", color:'white', fontWeight:'bold', borderColor:'#045FB4'}} htmlType="submit" loading={isAddingPost}>게시하기</Button>
       </div>
       <div>
         {imagePaths.map((v, i) => (
