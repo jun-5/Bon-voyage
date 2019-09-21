@@ -49,7 +49,7 @@ const NodeBird = ({ Component, store, pageProps }) => {
             property: 'og:image', content: 'https://nodebird.com/favicon.ico',
           }]}
           link={[{
-            rel: 'shortcut icon', href: '/favicon.ico',
+            rel: 'shortcut icon', href: '/favicon.jpg',
           }, {
             rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/antd/3.16.2/antd.css',
           }, {
