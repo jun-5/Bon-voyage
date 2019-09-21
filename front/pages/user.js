@@ -40,7 +40,7 @@ const User = () => {
         )
         : null}
       {mainPosts.map(c => (
-        <PostCard key={c.id} post={c} />
+        <PostCard style={{fontWeight:'bold', color:'black'}} key={c.id} post={c} />
       ))}
     </div>
   );

@@ -34,10 +34,10 @@ const Home = () => {
 
   return (
     <div>
-      {me && <PostForm />}
+      {me && <PostForm  style={{backgroundColor:'#04B4AE'}}/>}
       {mainPosts.map((c) => {
         return (
-          <PostCard key={c.id} post={c} />
+          <PostCard key={c.id} post={c} style={{backgroundColor:'#04B4AE', fontWeight:'bold', color:'black'}} />
         );
       })}
     </div>

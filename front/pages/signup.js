@@ -31,13 +31,15 @@ const Signup = () => {
 
   useEffect(() => {
     if (me) {
-      alert('로그인했으니 메인페이지로 이동합니다.');
+      alert('로그인 성공');
       Router.push('/');
     }
   }, [me && me.id]);
 
   const onSubmit = useCallback((e) => {
     e.preventDefault();
+    Router.push('/');
+    alert('회원가입 성공');
     if (password !== passwordCheck) {
       return setPasswordError(true);
     }
@@ -99,7 +101,7 @@ const Signup = () => {
           {passwordError && <SignupError>비밀번호가 일치하지 않습니다.</SignupError>}
         </div>
         <div>
-          <Checkbox name="user-term" checked={term} onChange={onChangeTerm}>제로초 말을 잘 들을 것을 동의합니다.</Checkbox>
+          <Checkbox name="user-term" checked={term} onChange={onChangeTerm}>여행을 좋아하나요?</Checkbox>
           {termError && <SignupError>약관에 동의하셔야 합니다.</SignupError>}
         </div>
         <div style={{ marginTop: 10 }}>

@@ -64,7 +64,7 @@ const Profile = () => {
       />
       <div>
         {mainPosts.map(c => (
-          <PostCard key={+c.createdAt} post={c} />
+          <PostCard style={{fontWeight:'bold', color:'black'}} key={+c.createdAt} post={c} />
         ))}
       </div>
     </div>
