@@ -72,8 +72,8 @@ const AppLayout = ({ children }) => {
       <Row gutter={8} style={{backgroundColor:'#CEE3F6', verticalAlign: 'middle'}} >
         <Col xs={24} md={4}>
           {me
-          ?<div/>
-            // ? <UserProfile/>
+          ?
+             <UserProfile/>
             : <LoginForm />}
         </Col>
         <Col xs={24} md={16}>
