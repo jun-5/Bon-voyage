@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { LOAD_POST_REQUEST } from '../reducers/post';
-import { backUrl } from '../config/config';
 
 const Post = ({ id }) => {
   const { singlePost } = useSelector(state => state.post);
@@ -19,9 +18,9 @@ const Post = ({ id }) => {
         }, {
           property: 'og:description', content: singlePost.content,
         }, {
-          property: 'og:image', content: singlePost.Images[0] ? singlePost.Images[0].src : 'https://nodebird.com/favicon.ico',
+          property: 'og:image', content: singlePost.Images[0] ? singlePost.Images[0].src : 'https://nodebird.com/favicon.jpg',
         }, {
-          property: 'og:url', content: `https://nodebird.com/post/${id}`,
+          property: 'og:url', content: `http://bon-voyage-trip.com/post/${id}`,
         }]}
       />
       <div itemScope="content">{singlePost.content}</div>
