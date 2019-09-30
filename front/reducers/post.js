@@ -1,5 +1,10 @@
 import produce from 'immer';
-
+/**
+ * immer의 사용이유
+ * 리듀서에서 state의 불변성을 유지하기 위하여 많은양의 코드가 필요하다
+ * 하지만, immer를 사용한다면 70번 라인에 있는 return(produce)의 짧은 코드를 추가하는 것 만으로도
+ * draft를 사용하여 쉽게 불변성을 유지하며 state값을 변경할 수 있다.
+ */
 export const initialState = {
   mainPosts: [], // 화면에 보일 포스트들
   imagePaths: [], // 미리보기 이미지 경로

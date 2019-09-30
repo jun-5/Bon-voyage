@@ -372,3 +372,14 @@ export default function* postSaga() {
     fork(watchLoadPost),
   ]);
 }
+
+
+//import { all, fork, takeLatest, put, throttle, call } from 'redux-saga/effects';
+//all은 한번에 여러개 수행 fork는 비동기 처리 
+//takeLatest는 여러개의 Request가 와도 마지막것만 유효하게 처리한다. ex)로그인
+//외에도 takeEvery라는 것이 있는데 이것은 모든 Request를 다 수행한다.
+//put 은 dispatch를 수행하는 역할과 비슷하다고 생각하면 된다.
+//throttle 같은 경우 매개변수로 숫자를 넣을 수 있다. 1000=1초 
+//같은 Request가 계속하여 오는것을 1초에 한번으로 조정 가능하다.
+ //SQL인젝션 방어에 좋아보인다. , 불필요한 Request를 줄여서 메모리낭비를 없앤다. (최적화)
+ //call은 백엔드 서버와 api 통신

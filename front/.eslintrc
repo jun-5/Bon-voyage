@@ -1,4 +1,6 @@
-{
+{//Airbnb ESLINT를 적용 ESLINT는 규칙을 정해주는 것? ; OR , 등 엄격한 규칙 적용
+  //Prettier -> 자신의 스타일로 작성하면 원하는 규칙으로 바꿔줌
+  //Snipet -> 명령어를 통하여 자주 작성하는 기본구조를 빠르게 작성할 수 있음. 
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2018,

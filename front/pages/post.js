@@ -8,7 +8,7 @@ const Post = ({ id }) => {
   const { singlePost } = useSelector(state => state.post);
   return (
     <>
-      <Helmet
+      <Helmet      //React Helmet을 이용하여 헤드태그 조작 카카오톡에서 공유해보면 요부분이 이미지,이름을 담당
         title={`${singlePost.User.nickname}님의 글`}
         description={singlePost.content}
         meta={[{

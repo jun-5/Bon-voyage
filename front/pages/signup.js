@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import Router from 'next/router';
+import Router from 'next/router'; 
 import styled from 'styled-components';
 import { SIGN_UP_REQUEST } from '../reducers/user';
 

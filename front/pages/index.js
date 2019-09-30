@@ -10,7 +10,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const countRef = useRef([]);
 
-  const onScroll = useCallback(() => {
+  const onScroll = useCallback(() => { //인피니티 스크롤링 관련 
     if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
       if (hasMorePost) {
         const lastId = mainPosts[mainPosts.length - 1].id;
@@ -23,7 +23,7 @@ const Home = () => {
         }
       }
     }
-  }, [hasMorePost, mainPosts.length]);
+  }, [hasMorePost, mainPosts.length]);    
 
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
@@ -45,7 +45,6 @@ const Home = () => {
 };
 
 Home.getInitialProps = async (context) => {
-  console.log(Object.keys(context));
   context.store.dispatch({
     type: LOAD_MAIN_POSTS_REQUEST,
   });

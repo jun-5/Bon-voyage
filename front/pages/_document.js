@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import Document, { Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-
+//이 페이지의 용도는 React Helmet에 SSR적용
 class MyDocument extends Document {
   static getInitialProps(context) {
     const sheet = new ServerStyleSheet();

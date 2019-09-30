@@ -14,3 +14,6 @@ const About = () => {
   };
 
 export default About;
+
+
+//불필요하다 판단하여 삭제예정

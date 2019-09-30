@@ -66,13 +66,13 @@ const NodeBird = ({ Component, store, pageProps }) => {
   );
 };
 
-NodeBird.propTypes = {
+NodeBird.propTypes = {  //PropTypes는 PROPS를 가지고있는 컴포넌트에 PROPS의 타입을 정의
   Component: PropTypes.elementType.isRequired,
   store: PropTypes.object.isRequired,
   pageProps: PropTypes.object.isRequired,
 };
 
-NodeBird.getInitialProps = async (context) => {
+NodeBird.getInitialProps = async (context) => { //next에서 제공하는 getinitialProps를 이용하여 쉽게 서버사이드렌더링 수행할 수 있다.
   const { ctx, Component } = context;
   let pageProps = {};
   const state = ctx.store.getState();
@@ -93,17 +93,20 @@ NodeBird.getInitialProps = async (context) => {
 };
 
 const configureStore = (initialState, options) => {
-  const sagaMiddleware = createSagaMiddleware();
-  const middlewares = [sagaMiddleware];
-  const enhancer = process.env.NODE_ENV === 'production'
-    ? compose(applyMiddleware(...middlewares))
+  const sagaMiddleware = createSagaMiddleware(); //사가 미들웨어 생성
+  const middlewares = [sagaMiddleware]; //사가미들웨어 적용
+  const enhancer = process.env.NODE_ENV === 'production' 
+    ? compose(applyMiddleware(...middlewares)) 
     : compose(
       applyMiddleware(...middlewares),
       !options.isServer && typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined' ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
     );
-  const store = createStore(reducer, initialState, enhancer);
-  store.sagaTask = sagaMiddleware.run(rootSaga);
+  const store = createStore(reducer, initialState, enhancer); //redux store만들기
+  store.sagaTask = sagaMiddleware.run(rootSaga); //rootsaga등록
   return store;
 };
 
-export default withRedux(configureStore)(withReduxSaga(NodeBird));
+export default withRedux(configureStore)(withReduxSaga(NodeBird)); //HOC 고차컴포넌트 기능확장
+
+
+
