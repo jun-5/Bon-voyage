@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     collate: 'utf8_general_ci', // 한글이 저장돼요
   });
 
-  User.associate = (db) => {
+  User.associate = (db) => { //이부분은 sequelize를 사용하여 테이블간의 관계를 구현한 코드입니다. 하지만, 완벽한 이해를 하지 못하였습니다. Nodejs교과서 교재 참고하였습니다.
     db.User.hasMany(db.Post, { as: 'Posts' });
     db.User.hasMany(db.Comment);
     db.User.belongsToMany(db.Post, { through: 'Like', as: 'Liked' });

@@ -1,15 +1,15 @@
 const express = require('express');
-const multer = require('multer');
+const multer = require('multer'); //이미지 업로드
 const path = require('path');
 const AWS = require('aws-sdk');
-const multerS3 = require('multer-s3');
+const multerS3 = require('multer-s3'); //s3에 업로드
 
 const db = require('../models');
 const { isLoggedIn } = require('./middleware');
 
 const router = express.Router();
 
-AWS.config.update({
+AWS.config.update({ //aws access key id, password는 중요하므로 dotenv파일
   region: 'ap-northeast-2',
   accessKeyId: process.env.S3_ACCESS_KEY_ID,
   secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
@@ -18,19 +18,19 @@ AWS.config.update({
 const upload = multer({
   storage: multerS3({
     s3: new AWS.S3(),
-    bucket: 'react-nodebird',
+    bucket: 'bon-voyage-junho', //버킷 이름
     key(req, file, cb) {
       cb(null, `original/${+new Date()}${path.basename(file.originalname)}`);
     },
   }),
-  limits: { fileSize: 20 * 1024 * 1024 },
+  limits: { fileSize: 20 * 1024 * 1024 }, //파일 크기 제한
 });
 
 router.post('/', isLoggedIn, upload.none(), async (req, res, next) => { // POST /api/post
   try {
     const hashtags = req.body.content.match(/#[^\s]+/g);
     const newPost = await db.Post.create({
-      content: req.body.content, // ex) '제로초 파이팅 #구독 #좋아요 눌러주세요'
+      content: req.body.content, 
       UserId: req.user.id,
     });
     if (hashtags) {
