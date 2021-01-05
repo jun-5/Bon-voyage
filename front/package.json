@@ -14,7 +14,7 @@
   "dependencies": {
     "@next/bundle-analyzer": "^8.1.0",
     "antd": "^3.17.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "compression-webpack-plugin": "^2.0.0",
     "cookie-parser": "^1.4.4",
     "cross-env": "^5.2.0",
